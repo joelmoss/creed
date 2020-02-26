@@ -1,4 +1,6 @@
-require "creed/version"
+# frozen_string_literal: true
+
+require 'creed/version'
 
 module Creed
   class Error < StandardError; end
