@@ -1,8 +1,6 @@
-# Creed
+# Creed - Stupid Simple Commands for Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/creed`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Creed provides a stupid simple way to introduce the [Command Pattern](https://en.wikipedia.org/wiki/Command_pattern) to your Rails controllers.
 
 ## Installation
 
@@ -22,7 +20,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create your Command classes in `app/controllers/commands`, extending `Creed::Command`, and implementing a `perform` method:
+
+```ruby
+class CreateUser < Creed::Command
+  # Define types and/or validations.
+  param :user_params, Creed::Types.Instance(ActionController::Parameters)
+
+  def perform
+    # Do something here...
+  end
+end
+```
+
+Then in your controller:
+
+```ruby
+class UserController < ApplicationController
+  def create
+    CreateUser.perform(user_params)
+  end
+end
+```
 
 ## Development
 
@@ -33,7 +52,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/joelmoss/creed. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/joelmoss/creed/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
