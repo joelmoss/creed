@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require 'creed/version'
-
 module Creed
-  class Error < StandardError; end
-  # Your code goes here...
+  autoload :Command, 'creed/command'
+  autoload :Responder, 'creed/responder'
+  autoload :Types, 'creed/types'
 end
