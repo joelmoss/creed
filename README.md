@@ -1,6 +1,6 @@
 # Creed - Stupid Simple Commands for Rails
 
-Creed provides a stupid simple way to introduce the [Command Pattern](https://en.wikipedia.org/wiki/Command_pattern) to your Rails controllers.
+Creed provides a stupid simple way to introduce the [Command Pattern](https://en.wikipedia.org/wiki/Command_pattern) to your Rails app.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-Create your Command classes in `app/controllers/commands`, extending `Creed::Command`, and implementing a `perform` method:
+Create your Command classes in `app/commands`, extending `Creed::Command`, and implementing a `perform` method:
 
 ```ruby
 class CreateUser < Creed::Command
@@ -33,7 +33,7 @@ class CreateUser < Creed::Command
 end
 ```
 
-Then in your controller:
+Then in your controller (or anywhere):
 
 ```ruby
 class UserController < ApplicationController
