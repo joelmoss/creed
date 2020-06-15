@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Joel Moss']
   spec.email         = ['joel@developwithstyle.com']
 
-  spec.summary       = 'Command pattern or Rails'
+  spec.summary       = 'Command pattern for Rails'
   spec.homepage      = 'https://github.com/joelmoss/creed'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
