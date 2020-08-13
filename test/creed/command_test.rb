@@ -15,6 +15,7 @@ class Creed::CommandTest < Minitest::Test
     assert CreateUser.respond_to?(:perform)
   end
 
+  focus
   def test_undefined_arguments
     assert_raises(ArgumentError) { CreateUser.perform }
   end
