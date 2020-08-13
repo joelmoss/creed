@@ -20,12 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-Create your Command classes in `app/commands`, extending `Creed::Command`, and implementing a `perform` method:
+Create your Command classes in `app/commands`, extending `Creed::Command`, and implementing a `perform` method. Optionally defining params and/or options that can be passed when performing the command.
 
 ```ruby
 class CreateUser < Creed::Command
-  # Define types and/or validations.
+  # Define types and/or validations. See https://github.com/dry-rb/dry-initializer.
   param :user_params, Creed::Types.Instance(ActionController::Parameters)
+  option :validate, default: true
 
   def perform
     # Do something here...
@@ -38,7 +39,7 @@ Then in your controller (or anywhere):
 ```ruby
 class UserController < ApplicationController
   def create
-    CreateUser.perform(user_params)
+    CreateUser.perform(user_params, validate: false)
   end
 end
 ```
