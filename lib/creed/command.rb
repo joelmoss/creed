@@ -4,7 +4,7 @@ require 'dry-initializer'
 require 'dry-initializer-rails'
 
 class Creed::Command
-  extend Dry::Initializer
+  extend Dry::Initializer[undefined: false]
 
   def self.perform(*context)
     new(*context).perform
