@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'actionpack', '>= 6.0'
   spec.add_dependency 'dry-initializer'
+  spec.add_dependency 'dry-initializer-rails'
   spec.add_dependency 'dry-types'
   spec.add_dependency 'railties', '>= 6.0'
   spec.add_dependency 'responders'
