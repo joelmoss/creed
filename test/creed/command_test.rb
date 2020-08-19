@@ -19,6 +19,10 @@ class Creed::CommandTest < Minitest::Test
     assert_raises(ArgumentError) { CreateUser.perform }
   end
 
+  def test_unknown_arguments
+    assert_raises(ArgumentError) { CreateUser.perform age: 1 }
+  end
+
   def test_return_value
     assert_equal 'joel', CreateUser.perform('joel')
   end

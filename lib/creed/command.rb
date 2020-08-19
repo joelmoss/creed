@@ -10,7 +10,16 @@ class Creed::Command
     # Make sure that any given options have their keys symbolized, otherwise they will be ignored,
     # as Dry::Initializer requires keyword arguments or symbolized keys.
     options = context.extract_options!
-    context << options.symbolize_keys unless options.empty?
+
+    unless options.empty?
+      options.symbolize_keys!
+
+      # Raise on unknown options.
+      unknown_keys = options.keys - dry_initializer.options.map(&:source)
+      raise ArgumentError, "unknown keys: `#{unknown_keys.join '`, `'}`" if unknown_keys.any?
+
+      context << options
+    end
 
     new(*context).perform(&block)
   end
