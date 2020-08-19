@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-Create your Command classes in `app/commands`, extending `Creed::Command`, and implementing a `perform` method. Optionally defining params and/or options that can be passed when performing the command.
+Create your Command classes in `app/commands`, extending `Creed::Command`, and implementing a `perform` method. Optionally defining params and/or options that can be passed when performing the command. Unknown arguments will raise an exception.
 
 ```ruby
 class CreateUser < Creed::Command
@@ -28,7 +28,9 @@ class CreateUser < Creed::Command
   param :user_params, Creed::Types.Instance(ActionController::Parameters)
   option :validate, default: true
 
-  def perform
+  # #perform has access to all options and params and named attributes. You can also pass it a
+  # block.
+  def perform(&block)
     # Do something here...
   end
 end

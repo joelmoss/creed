@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    creed (0.3.0)
+    creed (0.4.0)
       actionpack (>= 6.0)
       dry-initializer
       dry-initializer-rails
