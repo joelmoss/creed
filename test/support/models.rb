@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class Customer < Struct.new(:name, :id)
+Customer = Struct.new(:name, :id) do
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
   def to_js(_options = {})
     "name: #{name.inspect}"
   end
-  alias to_text to_js
+  alias_method :to_text, :to_js
 
   def errors
     []
