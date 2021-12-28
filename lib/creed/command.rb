@@ -17,11 +17,9 @@ class Creed::Command
       # Raise on unknown options.
       unknown_keys = options.keys - dry_initializer.options.map(&:source)
       raise ArgumentError, "unknown keys: `#{unknown_keys.join '`, `'}`" if unknown_keys.any?
-
-      context << options
     end
 
-    new(*context).perform(&block)
+    (options.empty? ? new(*context) : new(*context, **options)).perform(&block)
   end
 
   def perform
